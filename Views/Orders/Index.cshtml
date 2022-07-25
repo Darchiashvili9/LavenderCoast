@@ -1,0 +1,111 @@
+﻿@model LearnMathRu_0._1.Models.Order
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .red a {
+        background-color: limegreen !important;
+    }
+</style>
+
+<form asp-action="Create" class="form form-send" id="NewOrderSendForm">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    @*PROD*@
+    <div class="form-group">
+        <input type="hidden" asp-for="Product.ProductName" class="order-info-title" id="productName" />
+        <input type="hidden" asp-for="Product.ProductPrice" class="order-info-price" id="productPrice" />
+        <input class="order-info-size" type="hidden" name="размер" id="productSize">
+    </div>
+
+    @*CUST*@
+    <div class="form-group">
+        <input asp-for="Customer.CustomerName" id="custName" class="form__input" placeholder="Имя" />
+        <span asp-validation-for="Customer.CustomerName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input asp-for="Customer.CustomerPhoneNumber" class="form__input" id="custPhoneNumb" placeholder="Телефон" />
+        <span asp-validation-for="Customer.CustomerPhoneNumber" class="text-danger"></span>
+    </div>
+    <div id="CustAddress">
+        <div class="form-group">
+            <input asp-for="Customer.CustomerAddress" class="form__input" id="CustomerAddress" placeholder="Адрес" />
+            <span asp-validation-for="Customer.CustomerAddress" class="text-danger"></span>
+        </div>
+    </div>
+
+    @*ORD*@
+    <div id="myContentView">
+        <div class="form-group">
+            <div class="form__input">
+                <div class="demo-section k-content">
+                    @*                    <input asp-for="Product.OrderReceiveDate" id="holidays-date-picker" title="datetimepicker" style="width: 100%;" />
+                    *@
+                    <input asp-for="Product.VisitDate" class="datePickerMyClass" id="datepicker" type="text" title="datetimepicker" style="width: 100%;" />
+                    <input asp-for="Product.MasterclassDate" class="datePickerMyClass" id="datepicker2" type="text" title="datetimepicker2" style="width: 100%;" />
+
+
+                    <span asp-validation-for="Product.VisitDate" class="text-danger"></span>
+                    <span asp-validation-for="Product.MasterclassDate" class="text-danger"></span>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <select asp-for="Product.OrderReceiveTime" class="form__input" id="OrderTiming">
+                <option value="">Выберите Время</option>
+                @*                <option value="MorningTime">MorningTime</option>
+                    <option value="DayTime">DayTime</option>
+                *@
+            </select>
+            <span asp-validation-for="Product.OrderReceiveTime" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div id="leftTicketCounter" style="color:red">
+        <div class="form-group">
+            <output class="form__input" id="outP1" />
+        </div>
+        <div class="form-group">
+            <output class="form__input" id="outP2" />
+        </div>
+        <div class="form-group">
+            <output class="form__input" id="outP3" />
+        </div>
+
+        <div class="form-group">
+            <output class="form__input" id="outP4" />
+        </div>
+    </div>
+
+    <div id="QuantityProd">
+        <div class="form-group">
+            <input asp-for="Product.ProductQuantity" class="form__input" id="ProductQuantity" placeholder="Количество" />
+            <span asp-validation-for="Product.ProductQuantity" class="text-danger"></span>
+        </div>
+    </div>
+
+    <br />
+    <div class="form-group" style="margin-left:45px;">
+        <label asp-for="hasAgreedTurms">
+            <input asp-for="hasAgreedTurms" id="hasAgreedTurms" value="true" required />
+            согласен с правилами
+        </label>
+        <span asp-validation-for="hasAgreedTurms" class="text-danger"></span>
+    </div>
+    <br />
+
+    <input type="submit" value="Отправить" class="btn form__btn" id="addNewBtn" />
+</form>
+
+@section Scripts {
+    @{
+        var kendoVersion = "2020.1.219";
+    }
+<script src="https://kendo.cdn.telerik.com/@kendoVersion/js/jquery.min.js"></script>
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

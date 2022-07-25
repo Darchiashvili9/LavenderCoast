@@ -1,0 +1,85 @@
+﻿@model IEnumerable<LearnMathRu_0._1.Models.Customer>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+@*    @Html.Partial("CustomerView")
+*@
+
+<!-- popup-order -->
+<div class="popup popup-order">
+    <div class="popup__wrapper">
+        <div class="popup__inner">
+            <div class="popup__content">
+                <button class="btn-close popup__btn-close popup-close"></button>
+                <h2 class="page-title popup__title">Заполните форму</h2>
+                <p class="popup__subtitle popup__subtitle--order">Для подтверждения заказа мы свяжемся с вами по номеру телефона</p>
+                <div class="order">
+                    <img class="order__img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="">
+                    <h3 class="order__title">
+                        <span class="order-product-title"></span>
+                        <span class="order-product-price"></span> &#8381;
+                    </h3>
+                    <p class="order__size"></p>
+                    <form class="form form-send">
+                        <input class="order-info-title" id="productName" type="hidden" name="пицца">
+                        <input class="order-info-price" id="productPrice" type="hidden" name="цена">
+                        <input class="order-info-size" type="hidden" name="размер">
+                        <input class="form__input" type="text" id="custName" name="имя" placeholder="Имя" required>
+                        <input class="form__input" type="text" id="custLName" name="Lname" placeholder="фамиля" required>
+                        <input class="form__input" type="text" id="custPhoneNumb" name="телефон" placeholder="Телефон" required>
+                        <input class="form__input" type="text" id="CustomerAddress" name="адрес" placeholder="Адрес" required>
+
+                        @*ORDER INFORMATION*@
+                        <div class="form__input">
+                            <div class="demo-section k-content">
+                                <input id="datetimepicker" title="datetimepicker" style="width: 100%;" />
+                            </div>
+                        </div>
+
+                        <select class="form__input" id="OrderTiming" name="OrderTiming">
+                            <option value="MorningTime">Morning Time</option>
+                            <option value="DayTime">Day Time</option>
+                        </select>
+
+
+                        @*PRODUCT INFORMATION*@
+                        <input class="form__input" type="text" name="ProductQuantity" id="ProductQuantity" placeholder="ProductQuantity" required>
+
+
+                        <button class="btn form__btn" id="addNewBtn" type="button">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.popup-order -->
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+<script>
+            $(function () {
+            $("#datetimepicker").kendoDatePicker({
+                value: new Date("11/13/2015"),
+                disableDates: ["sa", "su"]
+            });
+        })
+
+    //    $("#kDatePicker").focus(function(){$("#kDatePicker").css("background-color", "green");})
+    //  //$("#kDatePicker").k-calendar .k-state-selected { background: red; }
+
+    //   $("#kDatePicker").disableDates
+    ///*KENDO DATE-TIME*/
+    //    $(function () {
+    //        // create DateTimePicker from input HTML element
+    //        $("#datetimepicker").kendoDateTimePicker({
+    //            value: new Date(),
+    //            dateInput: true
+    //        });
+    //    });
+
+</script>
+}

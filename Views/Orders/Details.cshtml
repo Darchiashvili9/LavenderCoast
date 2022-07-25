@@ -1,0 +1,59 @@
+﻿@*@model LearnMathRu_0._1.Models.Order
+*@
+@{
+    ViewData["Title"] = "Payment Details";
+}
+
+@{
+    Layout = null;
+}
+
+<style>
+    body, html {
+        height: 100%;
+    }
+    .bg {
+        /* The image used */
+        background-image: url('@Url.Content("~/img/section-top/bg.jpg")');
+        /* Full height */
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+
+<title>Payment Details</title>
+
+<meta http-equiv="refresh" content="3; url='https://lavendercoast.ru'" />
+
+<body class="bg">
+    <div style="text-align:center">
+        <h1 style="margin-top:127px;">@ViewBag.PaymentStatus</h1>
+        <h2>@ViewBag.PaymentMessage</h2>
+
+        <h3 style="color:white">redirect in 3 seconds</h3>
+        <a asp-action="Index">Вернуться на главную страницу</a>
+        @*<input type="button" id="redirectButton" value="Redirect Me" />*@
+    </div>
+
+</body>
+
+@section Scripts {
+
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+<script>
+
+    $('#redirectButton').on("click", function () {
+        window.location = "https://localhost:7115";
+    });
+
+    //  document.querySelector('.popup-thanks').classList.add('is-active');
+
+</script>
+
+}

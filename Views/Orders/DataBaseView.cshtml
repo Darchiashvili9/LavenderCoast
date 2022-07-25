@@ -1,0 +1,120 @@
+﻿@model DatabaseModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DataBaseView</title>
+</head>
+<body>
+    <p>
+        @*        <a asp-action="Create">Create New</a>
+        *@
+    </p>
+
+    <div style="text-align:center">
+        <h2 style="color:purple">Lavanda DataBaseView</h2>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayName("ID")
+                </th>
+                <th>
+                    @Html.DisplayName("Name")
+                </th>
+                <th>
+                    @Html.DisplayName("PhoneNumber")
+                </th>
+                <th>
+                    @Html.DisplayName("Address")
+                </th>
+                <th>
+                    @Html.DisplayName("HasAgreedTurms ")
+                </th>
+                <th>
+                    @Html.DisplayName("HasPayed")
+                </th>
+                <th>
+                    @Html.DisplayName("OrderDate")
+                </th>
+                <th>
+                    @Html.DisplayName("Product")
+                </th>
+                <th>
+                    @Html.DisplayName("Price")
+                </th>
+                <th>
+                    @Html.DisplayName("Quantity")
+                </th>
+                <th>
+                    @Html.DisplayName("VisitDate")
+                </th>
+                <th>
+                    @Html.DisplayName("MasterclassDate")
+                </th>
+                <th>
+                    @Html.DisplayName("OrderReceiveTime")
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ord)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.CustomerId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.CustomerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.CustomerPhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.CustomerAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hasAgreedTurms)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CustPayment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.orderDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.ProductPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.ProductQuantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.VisitDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.MasterclassDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.OrderReceiveTime)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        @*                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        *@                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
